@@ -3,7 +3,7 @@ import { SquareProperties } from '../types';
 
 const cache: Record<string, SquareProperties> = {};
 
-export default function bird(x: number, y: number): SquareProperties {
+export default function drops(x: number, y: number): SquareProperties {
   const key = `${x}.${y}`;
 
   if (cache[key]) {
