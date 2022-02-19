@@ -14,12 +14,8 @@ export default function bird(x: number, y: number): SquareProperties {
       };
     }
 
-    if (cache[key].alpha > 0.3) {
-      cache[key].alpha = cache[key].alpha - 0.005;
-    } else if (cache[key].alpha > 0.1) {
-      cache[key].alpha = cache[key].alpha - 0.0005;
-    } else if (cache[key].alpha > 0.01) {
-      cache[key].alpha = cache[key].alpha - 0.0001;
+    if (cache[key].alpha >= 0.01) {
+      cache[key].alpha -= cache[key].alpha * 0.01;
     }
 
     return cache[key];
