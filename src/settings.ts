@@ -1,41 +1,55 @@
-import { Settings } from './types';
+import {
+  GeneralProperties,
+  UserProperties,
+  WEGeneralProperties,
+  WEUserProperties,
+} from './types';
 
-export const settings: Settings = {
+export const generalProperties: GeneralProperties = {
   fps: 60,
+};
+
+export const userProperties: UserProperties = {
   squareSize: 6,
   spacing: 4,
-  effect: 'drops',
+  effect: 'blinkyTan',
   speed: 1,
 };
 
 declare global {
   interface Window {
     wallpaperPropertyListener: {
-      applyGeneralProperties: (properties: Settings) => void;
+      applyUserProperties: (properties: WEUserProperties) => void;
+      applyGeneralProperties: (properties: WEGeneralProperties) => void;
     };
   }
 }
 
 window.wallpaperPropertyListener = {
-  applyGeneralProperties(properties: Settings) {
-    if (properties.fps) {
-      settings.fps = properties.fps;
-    }
+  applyUserProperties(properties: WEUserProperties) {
+    console.log({ user: properties });
 
     if (properties.squareSize) {
-      settings.squareSize = properties.squareSize;
+      userProperties.squareSize = properties.squareSize.value;
     }
 
     if (properties.spacing) {
-      settings.spacing = properties.spacing;
+      userProperties.spacing = properties.spacing.value;
     }
 
     if (properties.effect) {
-      settings.effect = properties.effect;
+      userProperties.effect = properties.effect.value;
     }
 
     if (properties.speed) {
-      settings.speed = properties.speed;
+      userProperties.speed = properties.speed.value;
+    }
+  },
+  applyGeneralProperties(properties: WEGeneralProperties) {
+    console.log({ general: properties });
+
+    if (properties.fps) {
+      generalProperties.fps = properties.fps;
     }
   },
 };

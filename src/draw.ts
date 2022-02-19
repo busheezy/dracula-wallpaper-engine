@@ -1,5 +1,5 @@
 import { colors } from './colors';
-import { settings } from './settings';
+import { userProperties } from './settings';
 import { drawDebug } from './debug';
 import { effects } from './effects';
 import { Color } from './types';
@@ -11,25 +11,28 @@ export default function draw() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
   const columns = Math.ceil(
-    window.innerWidth / (settings.squareSize * settings.spacing),
+    window.innerWidth / (userProperties.squareSize * userProperties.spacing),
   );
   const rows = Math.ceil(
-    window.innerHeight / (settings.squareSize * settings.spacing),
+    window.innerHeight / (userProperties.squareSize * userProperties.spacing),
   );
 
   for (let columnsI = 0; columnsI < columns; columnsI++) {
     for (let rowsI = 0; rowsI < rows; rowsI++) {
-      const { colorIndex, alpha } = effects[settings.effect]!(columnsI, rowsI);
+      const { colorIndex, alpha } = effects[userProperties.effect]!(
+        columnsI,
+        rowsI,
+      );
 
       const color = <Color>colors[colorIndex];
 
       ctx.fillStyle = `rgba(${color.r}, ${color.g}, ${color.b}, ${alpha})`;
 
       ctx.fillRect(
-        settings.squareSize * columnsI * settings.spacing + 10,
-        settings.squareSize * rowsI * settings.spacing + 10,
-        settings.squareSize,
-        settings.squareSize,
+        userProperties.squareSize * columnsI * userProperties.spacing + 10,
+        userProperties.squareSize * rowsI * userProperties.spacing + 10,
+        userProperties.squareSize,
+        userProperties.squareSize,
       );
     }
   }

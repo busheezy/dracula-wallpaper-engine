@@ -1,7 +1,7 @@
 import draw from './draw';
-import { settings } from './settings';
+import { generalProperties } from './settings';
 
-const tickLength = 1.0 / settings.fps;
+const tickLength = 1.0 / generalProperties.fps;
 let lastTime = performance.now() / 1000;
 let fpsThreshold = 0;
 
@@ -12,7 +12,7 @@ function run() {
   const delta = Math.min(now - lastTime, 1);
   lastTime = now;
 
-  if (settings.fps > 0) {
+  if (generalProperties.fps > 0) {
     fpsThreshold += delta;
 
     if (fpsThreshold < tickLength) {

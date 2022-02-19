@@ -1,7 +1,7 @@
 const canvas = <HTMLCanvasElement>document.getElementById('canvas');
 const ctx = <CanvasRenderingContext2D>canvas.getContext('2d');
 
-import { settings } from './settings';
+import { userProperties } from './settings';
 import { effects } from './effects';
 
 let debug = false;
@@ -31,21 +31,32 @@ canvas.addEventListener('mouseup', () => {
   }
 });
 
+function squareFromCoord(coord: number) {
+  const offsetCoord = coord - 10 - userProperties.spacing;
+
+  const output =
+    offsetCoord / userProperties.squareSize / userProperties.spacing;
+
+  const outputInt = Math.ceil(output);
+
+  return outputInt;
+}
+
 export function drawDebug() {
   if (!debug) {
     return;
   }
 
   const [debugX, debugY] = [
-    Math.round((debugXCoord + 10) / settings.squareSize / settings.spacing),
-    Math.round((debugYCoord + 10) / settings.squareSize / settings.spacing),
+    squareFromCoord(debugXCoord),
+    squareFromCoord(debugYCoord),
   ];
 
   const {
     debugs = [],
     colorIndex,
     alpha,
-  } = effects[settings.effect]!(debugX, debugY);
+  } = effects[userProperties.effect]!(debugX, debugY);
 
   debugs.unshift(`Alpha: ${alpha}`);
   debugs.unshift(`Color Index: ${colorIndex}`);
@@ -61,10 +72,14 @@ export function drawDebug() {
 
   ctx.strokeStyle = '#fff';
   ctx.strokeRect(
-    settings.squareSize * (debugX - 1) * settings.spacing + 10 - stroke / 2,
-    settings.squareSize * (debugY - 1) * settings.spacing + 10 - stroke / 2,
-    settings.squareSize + stroke,
-    settings.squareSize + stroke,
+    userProperties.squareSize * (debugX - 1) * userProperties.spacing +
+      10 -
+      stroke / 2,
+    userProperties.squareSize * (debugY - 1) * userProperties.spacing +
+      10 -
+      stroke / 2,
+    userProperties.squareSize + stroke,
+    userProperties.squareSize + stroke,
   );
 
   for (let i = 0; i < debugs.length; i++) {

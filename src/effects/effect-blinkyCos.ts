@@ -1,7 +1,7 @@
-import { settings } from '../settings';
+import { userProperties } from '../settings';
 
 export default function blinkyCos(x: number, y: number) {
-  const now = (performance.now() / 1000) * settings.spacing;
+  const now = (performance.now() / 1000) * userProperties.spacing;
   const seed = now * Math.cos((x + 1) * (y + 1));
 
   const roundedSeed = Math.round(seed);
