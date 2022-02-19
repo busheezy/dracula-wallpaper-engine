@@ -1,0 +1,39 @@
+import random from "lodash-es/random";
+import { SquareProperties } from "../types";
+
+interface CachedSquare {
+  colorIndex: number;
+  alpha: number;
+}
+
+const cache: Record<string, CachedSquare> = {};
+
+export default function bird(x: number, y: number): SquareProperties {
+  const key = `${x}.${y}`;
+
+  if (cache[key]) {
+    if (random(1, 2000) === 1) {
+      cache[key] = {
+        colorIndex: random(0, 8),
+        alpha: random(0, 1, true),
+      };
+    }
+
+    if (cache[key].alpha > 0.3) {
+      cache[key].alpha = cache[key].alpha - 0.005;
+    } else if (cache[key].alpha > 0.1) {
+      cache[key].alpha = cache[key].alpha - 0.0005;
+    } else if (cache[key].alpha > 0.01) {
+      cache[key].alpha = cache[key].alpha - 0.0001;
+    }
+
+    return cache[key];
+  }
+
+  cache[key] = {
+    colorIndex: 0,
+    alpha: 0,
+  };
+
+  return cache[key];
+}
