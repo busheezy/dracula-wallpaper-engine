@@ -1,7 +1,7 @@
-import { EFFECT_SPEED } from '../consts';
+import { settings } from '../settings';
 
 export default function blinkySin(x: number, y: number) {
-  const now = (performance.now() / 1000) * EFFECT_SPEED;
+  const now = (performance.now() / 1000) * settings.speed;
   const seed = now * Math.sin((x + 1) * (y + 1));
 
   const roundedSeed = Math.round(seed);

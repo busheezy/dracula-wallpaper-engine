@@ -1,28 +1,7 @@
-import draw from "./draw";
+import draw from './draw';
+import { settings } from './settings';
 
-import { GeneralProperties } from "./types";
-
-declare global {
-  interface Window {
-    wallpaperPropertyListener: {
-      applyGeneralProperties: (properties: GeneralProperties) => void;
-    };
-  }
-}
-
-const wallpaperSettings = {
-  fps: 60,
-};
-
-window.wallpaperPropertyListener = {
-  applyGeneralProperties(properties: GeneralProperties) {
-    if (properties.fps) {
-      wallpaperSettings.fps = properties.fps;
-    }
-  },
-};
-
-const tickLength = 1.0 / wallpaperSettings.fps;
+const tickLength = 1.0 / settings.fps;
 let lastTime = performance.now() / 1000;
 let fpsThreshold = 0;
 
@@ -33,7 +12,7 @@ function run() {
   const delta = Math.min(now - lastTime, 1);
   lastTime = now;
 
-  if (wallpaperSettings.fps > 0) {
+  if (settings.fps > 0) {
     fpsThreshold += delta;
 
     if (fpsThreshold < tickLength) {
@@ -47,7 +26,7 @@ function run() {
 }
 
 function resize() {
-  const canvas = <HTMLCanvasElement>document.getElementById("canvas");
+  const canvas = <HTMLCanvasElement>document.getElementById('canvas');
 
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;

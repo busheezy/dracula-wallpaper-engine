@@ -1,0 +1,70 @@
+{
+  "file": "index.html",
+  "general": {
+    "properties": {
+      "effect": {
+        "index": 0,
+        "options": [
+          {
+            "label": "Drops",
+            "value": "drops"
+          },
+          {
+            "label": "Blinky Cos",
+            "value": "blinkyCos"
+          },
+          {
+            "label": "Blinky Tan",
+            "value": "blinkyTan"
+          }
+        ],
+        "order": 100,
+        "text": "Effect",
+        "type": "combo",
+        "value": "drops"
+      },
+      "schemecolor": {
+        "order": 0,
+        "text": "ui_browse_properties_scheme_color",
+        "type": "color",
+        "value": "0.4745098039215686 0.4392156862745098 0.6627450980392157"
+      },
+      "spacing": {
+        "fraction": false,
+        "index": 3,
+        "max": 100,
+        "min": 1,
+        "order": 103,
+        "text": "Spacing",
+        "type": "slider",
+        "value": 4
+      },
+      "speed": {
+        "fraction": true,
+        "index": 1,
+        "max": 1,
+        "min": 0,
+        "order": 101,
+        "precision": 2,
+        "step": 0.1,
+        "text": "Speed",
+        "type": "slider",
+        "value": 1
+      },
+      "squareSize": {
+        "fraction": false,
+        "index": 2,
+        "max": 100,
+        "min": 1,
+        "order": 102,
+        "text": "Square Size",
+        "type": "slider",
+        "value": 6
+      }
+    }
+  },
+  "preview": "preview.jpg",
+  "title": "Dracula",
+  "type": "web",
+  "version": 0
+}

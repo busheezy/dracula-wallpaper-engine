@@ -1,9 +1,9 @@
 import random from 'lodash-es/random';
-import { SquareProperties } from '../types';
+import { Square } from '../types';
 
-const cache: Record<string, SquareProperties> = {};
+const cache: Record<string, Square> = {};
 
-export default function drops(x: number, y: number): SquareProperties {
+export default function drops(x: number, y: number): Square {
   const key = `${x}.${y}`;
 
   if (cache[key]) {

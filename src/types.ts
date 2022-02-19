@@ -6,16 +6,21 @@ export interface Color {
   b: number;
 }
 
-export interface GeneralProperties {
+export interface Settings {
   fps: number;
+  squareSize: number;
+  spacing: number;
+  effect: EffectsNames;
+  speed: number;
 }
-export interface SquareProperties {
+
+export interface Square {
   colorIndex: number;
   alpha: number;
   debugs?: string[];
 }
 
-export type EffectFn = (x: number, y: number) => SquareProperties;
+export type EffectFn = (x: number, y: number) => Square;
 type EffectsNamesTuple = typeof effectNames;
 export type EffectsNames = EffectsNamesTuple[number];
 export type Effects = Partial<Record<EffectsNames, EffectFn>>;
