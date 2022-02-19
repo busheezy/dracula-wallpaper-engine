@@ -1,12 +1,7 @@
-import random from "lodash-es/random";
-import { SquareProperties } from "../types";
+import random from 'lodash-es/random';
+import { SquareProperties } from '../types';
 
-interface CachedSquare {
-  colorIndex: number;
-  alpha: number;
-}
-
-const cache: Record<string, CachedSquare> = {};
+const cache: Record<string, SquareProperties> = {};
 
 export default function bird(x: number, y: number): SquareProperties {
   const key = `${x}.${y}`;
