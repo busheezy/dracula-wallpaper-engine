@@ -1,9 +1,10 @@
 import { userProperties } from './settings';
-console.log({ userProperties2: userProperties });
 
 import tick from './tick';
 import { generalProperties } from './settings';
 import { resize } from './resize';
+
+import { startEffectUpdate } from './effect-update';
 
 const fpsTick = 1.0 / generalProperties.fps;
 
@@ -33,4 +34,8 @@ function run() {
 window.onload = function () {
   window.requestAnimationFrame(run);
   resize();
+
+  if (process.env.NODE_ENV !== 'production') {
+    startEffectUpdate(userProperties);
+  }
 };

@@ -1,11 +1,11 @@
 import { effects } from './effects';
 import { currentInfo } from './lib';
-import { userProperties } from './settings';
+import { UserProperties } from './types';
 
-const { effect } = userProperties;
-
-export function effectUpdate() {
+export function effectUpdate(userProperties: UserProperties) {
   const info = currentInfo();
+
+  const { effect } = userProperties;
   const currentEffect = effects[effect];
 
   currentEffect.effect?.(info);
@@ -13,7 +13,10 @@ export function effectUpdate() {
 
 let timer: null | NodeJS.Timer = null;
 
-export function startEffectUpdate() {
+export function startEffectUpdate(userProperties: UserProperties) {
   clearTimeout(timer);
-  timer = setInterval(effectUpdate, userProperties.interval);
+
+  timer = setInterval(() => {
+    effectUpdate(userProperties);
+  }, userProperties.interval);
 }

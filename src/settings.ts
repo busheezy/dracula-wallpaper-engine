@@ -47,7 +47,7 @@ window.wallpaperPropertyListener = {
 
     if (properties.interval) {
       userProperties.interval = properties.interval.value;
-      startEffectUpdate();
+      startEffectUpdate(userProperties);
     }
   },
 };
