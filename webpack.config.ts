@@ -47,6 +47,7 @@ const config: Configuration = {
   ],
   mode: process.env.NODE_ENV === 'production' ? 'production' : 'development',
   devServer,
+  devtool: process.env.NODE_ENV === 'production' ? false : 'eval-source-map',
 };
 
 export default config;

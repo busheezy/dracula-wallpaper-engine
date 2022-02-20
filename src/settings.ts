@@ -1,3 +1,4 @@
+import { startEffectUpdate } from './effect-update';
 import {
   GeneralProperties,
   UserProperties,
@@ -13,7 +14,7 @@ export const userProperties: UserProperties = {
   squareSize: 6,
   spacing: 4,
   effect: 'drops',
-  speed: 1,
+  interval: 50,
 };
 
 declare global {
@@ -26,9 +27,12 @@ declare global {
 }
 
 window.wallpaperPropertyListener = {
+  applyGeneralProperties(properties: WEGeneralProperties) {
+    if (properties.fps) {
+      generalProperties.fps = properties.fps;
+    }
+  },
   applyUserProperties(properties: WEUserProperties) {
-    console.log({ user: properties });
-
     if (properties.squareSize) {
       userProperties.squareSize = properties.squareSize.value;
     }
@@ -41,15 +45,9 @@ window.wallpaperPropertyListener = {
       userProperties.effect = properties.effect.value;
     }
 
-    if (properties.speed) {
-      userProperties.speed = properties.speed.value;
-    }
-  },
-  applyGeneralProperties(properties: WEGeneralProperties) {
-    console.log({ general: properties });
-
-    if (properties.fps) {
-      generalProperties.fps = properties.fps;
+    if (properties.interval) {
+      userProperties.interval = properties.interval.value;
+      startEffectUpdate();
     }
   },
 };

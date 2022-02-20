@@ -1,0 +1,16 @@
+{
+  "configurations": [
+    {
+      "name": "Launch Chrome against tunnel, with sourcemaps",
+      "type": "chrome",
+      "request": "launch",
+      "url": "https://local.busheezy.dev",
+      "sourceMaps": true,
+      "webRoot": "${workspaceRoot}",
+      "diagnosticLogging": true,
+      "sourceMapPathOverrides": {
+        "webpack:///./*": "${webRoot}/*"
+      },
+    }
+  ]
+}

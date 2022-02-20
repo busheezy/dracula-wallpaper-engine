@@ -32,10 +32,6 @@ export default function tick() {
   const info = currentInfo();
   const currentEffect = effects[userProperties.effect];
 
-  if (currentEffect.effect) {
-    currentEffect.effect(info);
-  }
-
   drawAll(info, currentEffect.draw);
   drawDebug();
 }

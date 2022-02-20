@@ -1,39 +1,36 @@
-import { canvas } from './canvas';
+import { userProperties } from './settings';
+console.log({ userProperties2: userProperties });
+
 import tick from './tick';
 import { generalProperties } from './settings';
+import { resize } from './resize';
 
-const tickLength = 1.0 / generalProperties.fps;
-let lastTime = performance.now() / 1000;
+const fpsTick = 1.0 / generalProperties.fps;
+
+let fpsLastTime = performance.now() / 1000;
 let fpsThreshold = 0;
 
 function run() {
-  let now = performance.now() / 1000;
-  const delta = Math.min(now - lastTime, 1);
-  lastTime = now;
+  const now = performance.now() / 1000;
+
+  const fpsDelta = Math.min(now - fpsLastTime, 1);
+  fpsLastTime = now;
 
   if (generalProperties.fps > 0) {
-    fpsThreshold += delta;
+    fpsThreshold += fpsDelta;
 
-    if (fpsThreshold < tickLength) {
-      window.requestAnimationFrame(run);
-      return;
+    if (fpsThreshold < fpsTick) {
+      return window.requestAnimationFrame(run);
     }
 
-    fpsThreshold -= tickLength;
+    fpsThreshold -= fpsTick;
   }
 
   tick();
   window.requestAnimationFrame(run);
 }
 
-function resize() {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-}
-
 window.onload = function () {
   window.requestAnimationFrame(run);
   resize();
 };
-
-window.onresize = resize;

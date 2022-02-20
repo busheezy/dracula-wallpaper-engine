@@ -10,7 +10,7 @@ export interface UserProperties {
   squareSize: number;
   spacing: number;
   effect: EffectsNames;
-  speed: number;
+  interval: number;
 }
 
 export interface GeneralProperties {
@@ -21,7 +21,7 @@ export interface WEUserProperties {
   squareSize: UserPropertySlider;
   spacing: UserPropertySlider;
   effect: UserPropertyCombo<EffectsNames>;
-  speed: UserPropertySliderFraction;
+  interval: UserPropertySlider;
 }
 
 export interface WEGeneralProperties {
@@ -71,12 +71,4 @@ export interface UserPropertySlider extends UserProperty {
   max: number;
   fraction: false;
   value: number;
-}
-
-export interface UserPropertySliderFraction {
-  min: number;
-  max: number;
-  fraction: true;
-  value: number;
-  precision: number;
 }

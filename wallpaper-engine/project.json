@@ -1,4 +1,6 @@
 {
+  "contentrating": "Everyone",
+  "description": "Customizable dynamic wallpaper using Dracula colors.\n\nhttps://github.com/busheezy/dracula-wallpaper-engine",
   "file": "index.html",
   "general": {
     "properties": {
@@ -44,16 +46,14 @@
         "value": 4
       },
       "speed": {
-        "fraction": true,
+        "fraction": false,
         "index": 1,
-        "max": 1,
-        "min": 0,
+        "max": 100,
+        "min": 1,
         "order": 101,
-        "precision": 2,
-        "step": 0.1,
-        "text": "Speed",
-        "type": "slider",
-        "value": 1
+        "text": "Interval",
+        "type": "interval",
+        "value": 50
       },
       "squareSize": {
         "fraction": false,
@@ -68,7 +68,12 @@
     }
   },
   "preview": "preview.jpg",
+  "tags": [
+    "Abstract"
+  ],
   "title": "Dracula",
   "type": "web",
-  "version": 0
+  "version": 2,
+  "workshopid": "2759090403",
+  "workshopurl": "steam://url/CommunityFilePage/2759090403"
 }
