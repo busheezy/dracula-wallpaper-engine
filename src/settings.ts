@@ -12,7 +12,7 @@ export const generalProperties: GeneralProperties = {
 export const userProperties: UserProperties = {
   squareSize: 6,
   spacing: 4,
-  effect: 'blinkyTan',
+  effect: 'blinkySin',
   speed: 1,
 };
 

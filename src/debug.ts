@@ -1,56 +1,18 @@
-const canvas = <HTMLCanvasElement>document.getElementById('canvas');
-const ctx = <CanvasRenderingContext2D>canvas.getContext('2d');
-
+import { parse } from 'query-string';
 import { userProperties } from './settings';
 import { effects } from './effects';
 
-let debug = false;
-let debugXCoord = 0;
-let debugYCoord = 0;
+const canvas = <HTMLCanvasElement>document.getElementById('canvas');
+const ctx = <CanvasRenderingContext2D>canvas.getContext('2d');
 
-canvas.addEventListener('mousedown', (e) => {
-  debug = true;
-
-  debugXCoord = e.offsetX;
-  debugYCoord = e.offsetY;
-});
-
-canvas.addEventListener('mousemove', (e) => {
-  if (debug === true) {
-    debugXCoord = e.offsetX;
-    debugYCoord = e.offsetY;
-  }
-});
-
-canvas.addEventListener('mouseup', () => {
-  if (debug) {
-    debug = false;
-
-    debugXCoord = 0;
-    debugYCoord = 0;
-  }
-});
-
-function squareFromCoord(coord: number) {
-  const offsetCoord = coord - 10 - userProperties.spacing;
-
-  const output =
-    offsetCoord / userProperties.squareSize / userProperties.spacing;
-
-  const outputInt = Math.ceil(output);
-
-  return outputInt;
-}
+const qs = parse(location.search);
 
 export function drawDebug() {
-  if (!debug) {
+  if (!qs.x || !qs.y || Array.isArray(qs.x) || Array.isArray(qs.y)) {
     return;
   }
 
-  const [debugX, debugY] = [
-    squareFromCoord(debugXCoord),
-    squareFromCoord(debugYCoord),
-  ];
+  const [debugX, debugY] = [parseInt(qs.x, 10), parseInt(qs.y, 10)];
 
   const {
     debugs = [],
@@ -71,13 +33,20 @@ export function drawDebug() {
   const stroke = 6;
 
   ctx.strokeStyle = '#fff';
+
+  const selectedBoxX =
+    userProperties.squareSize * debugX * userProperties.spacing +
+    10 -
+    stroke / 2;
+
+  const selectedBoxY =
+    userProperties.squareSize * debugY * userProperties.spacing +
+    10 -
+    stroke / 2;
+
   ctx.strokeRect(
-    userProperties.squareSize * (debugX - 1) * userProperties.spacing +
-      10 -
-      stroke / 2,
-    userProperties.squareSize * (debugY - 1) * userProperties.spacing +
-      10 -
-      stroke / 2,
+    selectedBoxX,
+    selectedBoxY,
     userProperties.squareSize + stroke,
     userProperties.squareSize + stroke,
   );
