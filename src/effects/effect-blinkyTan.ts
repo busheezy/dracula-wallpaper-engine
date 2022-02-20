@@ -1,6 +1,6 @@
 import { userProperties } from '../settings';
 
-export default function blinkyTan(x: number, y: number) {
+function blinkyTan(x: number, y: number) {
   const now = (performance.now() / 1000) * userProperties.speed;
   const seed = now * Math.tan((x + 1) * (y + 1));
 
@@ -15,3 +15,7 @@ export default function blinkyTan(x: number, y: number) {
     alpha,
   };
 }
+
+export default {
+  draw: blinkyTan,
+};

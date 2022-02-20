@@ -1,13 +1,14 @@
-import draw from './draw';
-import { generalProperties } from './settings';
+import { canvas } from './canvas';
+import tick from './tick';
+import { effects } from './effects';
+import { currentInfo } from './lib';
+import { generalProperties, userProperties } from './settings';
 
 const tickLength = 1.0 / generalProperties.fps;
 let lastTime = performance.now() / 1000;
 let fpsThreshold = 0;
 
 function run() {
-  window.requestAnimationFrame(run);
-
   let now = performance.now() / 1000;
   const delta = Math.min(now - lastTime, 1);
   lastTime = now;
@@ -16,18 +17,18 @@ function run() {
     fpsThreshold += delta;
 
     if (fpsThreshold < tickLength) {
+      window.requestAnimationFrame(run);
       return;
     }
 
     fpsThreshold -= tickLength;
   }
 
-  draw();
+  tick();
+  window.requestAnimationFrame(run);
 }
 
 function resize() {
-  const canvas = <HTMLCanvasElement>document.getElementById('canvas');
-
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
 }

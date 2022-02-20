@@ -1,9 +1,8 @@
 import { parse } from 'query-string';
 import { userProperties } from './settings';
 import { effects } from './effects';
-
-const canvas = <HTMLCanvasElement>document.getElementById('canvas');
-const ctx = <CanvasRenderingContext2D>canvas.getContext('2d');
+import { ctx } from './canvas';
+import { currentInfo } from './lib';
 
 const qs = parse(location.search);
 
@@ -14,13 +13,18 @@ export function drawDebug() {
 
   const [debugX, debugY] = [parseInt(qs.x, 10), parseInt(qs.y, 10)];
 
+  const info = currentInfo();
+  const currentEffect = effects[userProperties.effect];
+
   const {
     debugs = [],
     colorIndex,
     alpha,
-  } = effects[userProperties.effect]!(debugX, debugY);
+  } = currentEffect.draw(debugX, debugY, info);
 
-  debugs.unshift(`Alpha: ${alpha}`);
+  const alphaFixed = alpha.toFixed(2);
+
+  debugs.unshift(`Alpha: ${alphaFixed}`);
   debugs.unshift(`Color Index: ${colorIndex}`);
   debugs.unshift(`Box: ${debugX}, ${debugY}`);
 

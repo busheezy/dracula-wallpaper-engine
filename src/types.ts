@@ -34,10 +34,20 @@ export interface Square {
   debugs?: string[];
 }
 
-export type EffectFn = (x: number, y: number) => Square;
+export interface WallpaperInfo {
+  columns: number;
+  rows: number;
+}
+
+export type DrawFn = (x: number, y: number, info: WallpaperInfo) => Square;
+export type EffectFn = (info: WallpaperInfo) => void;
+export interface EffectExport {
+  draw: DrawFn;
+  effect?: EffectFn;
+}
 type EffectsNamesTuple = typeof effectNames;
 export type EffectsNames = EffectsNamesTuple[number];
-export type Effects = Partial<Record<EffectsNames, EffectFn>>;
+export type Effects = Partial<Record<EffectsNames, EffectExport>>;
 
 export interface UserProperty {
   index: number;

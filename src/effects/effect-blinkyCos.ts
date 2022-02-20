@@ -1,7 +1,7 @@
 import { userProperties } from '../settings';
 
-export default function blinkyCos(x: number, y: number) {
-  const now = (performance.now() / 1000) * userProperties.spacing;
+function blinkyCos(x: number, y: number) {
+  const now = (performance.now() / 1000) * userProperties.speed;
   const seed = now * Math.cos((x + 1) * (y + 1));
 
   const roundedSeed = Math.round(seed);
@@ -15,3 +15,7 @@ export default function blinkyCos(x: number, y: number) {
     alpha,
   };
 }
+
+export default {
+  draw: blinkyCos,
+};
