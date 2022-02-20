@@ -6,13 +6,13 @@ import { Color, DrawFn, WallpaperInfo } from './types';
 import { canvas, ctx } from './canvas';
 import { currentInfo } from './lib';
 
-export function draw(info: WallpaperInfo, draw: DrawFn) {
+export function drawAll(info: WallpaperInfo, drawSquare: DrawFn) {
   ctx.fillStyle = '#22212c';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
   for (let columnsI = 0; columnsI < info.columns; columnsI++) {
     for (let rowsI = 0; rowsI < info.rows; rowsI++) {
-      const { colorIndex, alpha } = draw(columnsI, rowsI, info);
+      const { colorIndex, alpha } = drawSquare(columnsI, rowsI, info);
 
       const color = <Color>colors[colorIndex];
       const alphaFixed = alpha.toFixed(2);
@@ -36,6 +36,6 @@ export default function tick() {
     currentEffect.effect(info);
   }
 
-  draw(info, currentEffect.draw);
+  drawAll(info, currentEffect.draw);
   drawDebug();
 }

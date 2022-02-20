@@ -1,8 +1,6 @@
 import { canvas } from './canvas';
 import tick from './tick';
-import { effects } from './effects';
-import { currentInfo } from './lib';
-import { generalProperties, userProperties } from './settings';
+import { generalProperties } from './settings';
 
 const tickLength = 1.0 / generalProperties.fps;
 let lastTime = performance.now() / 1000;
