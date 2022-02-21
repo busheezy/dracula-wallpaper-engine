@@ -1,5 +1,7 @@
 import { WallpaperInfo } from './types';
 import { userProperties } from './settings';
+import { effects } from './effects';
+import debounce from 'lodash-es/debounce';
 
 export function currentInfo(): WallpaperInfo {
   const columns = Math.ceil(
@@ -15,3 +17,17 @@ export function currentInfo(): WallpaperInfo {
     rows,
   };
 }
+
+export function clearCache() {
+  const currentEffect = effects[userProperties.effect];
+
+  if (currentEffect.cache) {
+    const cacheKeys = Object.keys(currentEffect.cache);
+
+    cacheKeys.forEach((cacheKey) => {
+      delete currentEffect.cache[cacheKey];
+    });
+  }
+}
+
+export const debouncedClearCache = debounce(clearCache, 250);
