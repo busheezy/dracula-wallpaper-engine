@@ -1,8 +1,8 @@
 import random from 'lodash-es/random';
 import { currentInfo } from '../lib';
-import { Square } from '../types';
+import { EffectExport, Square, SquareCache } from '../types';
 
-const cache: Record<string, Square> = {};
+export const cache: SquareCache = {};
 
 function addSquare() {
   const { columns, rows } = currentInfo();
@@ -32,7 +32,10 @@ function drops(x: number, y: number): Square {
   return cache[key];
 }
 
-export default {
+const effect: EffectExport = {
   draw: drops,
   effect: addSquare,
+  cache,
 };
+
+export default effect;

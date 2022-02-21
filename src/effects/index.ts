@@ -1,20 +1,23 @@
 import { Effects } from '../types';
 
-import blinkySin from './effect-blinkySin';
-import blinkyCos from './effect-blinkyCos';
-import blinkyTan from './effect-blinkyTan';
+import blinky from './effect-blinky';
 import drops from './effect-drops';
+import test from './effect-test';
+import bird from './effect-bird';
+import boring from './effect-boring';
 
 export const effectNames = [
-  'blinkySin',
-  'blinkyTan',
-  'blinkyCos',
+  'blinky',
   'drops',
+  'test',
+  'bird',
+  'boring',
 ] as const;
 
 export const effects: Effects = {
-  blinkySin,
-  blinkyCos,
-  blinkyTan,
+  blinky,
   drops,
+  test,
+  bird,
+  boring,
 };

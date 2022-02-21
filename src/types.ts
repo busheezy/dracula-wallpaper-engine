@@ -1,9 +1,9 @@
+import { schemeNames } from './colors';
 import { effectNames } from './effects';
 
-export interface Color {
-  r: number;
-  g: number;
-  b: number;
+export interface ColorScheme {
+  background: string;
+  colors: string[];
 }
 
 export interface UserProperties {
@@ -11,6 +11,7 @@ export interface UserProperties {
   spacing: number;
   effect: EffectsNames;
   interval: number;
+  scheme: SchemeNames;
 }
 
 export interface GeneralProperties {
@@ -22,6 +23,7 @@ export interface WEUserProperties {
   spacing: UserPropertySlider;
   effect: UserPropertyCombo<EffectsNames>;
   interval: UserPropertySlider;
+  scheme: UserPropertyCombo<SchemeNames>;
 }
 
 export interface WEGeneralProperties {
@@ -40,14 +42,21 @@ export interface WallpaperInfo {
 }
 
 export type DrawFn = (x: number, y: number, info: WallpaperInfo) => Square;
+
 export type EffectFn = (info: WallpaperInfo) => void;
+
 export interface EffectExport {
   draw: DrawFn;
   effect?: EffectFn;
+  cache?: SquareCache;
 }
 type EffectsNamesTuple = typeof effectNames;
+
 export type EffectsNames = EffectsNamesTuple[number];
+
 export type Effects = Partial<Record<EffectsNames, EffectExport>>;
+
+export type ColorSchemes = Record<string, ColorScheme>;
 
 export interface UserProperty {
   index: number;
@@ -72,3 +81,8 @@ export interface UserPropertySlider extends UserProperty {
   fraction: false;
   value: number;
 }
+
+type SchemeNamesTuple = typeof schemeNames;
+export type SchemeNames = SchemeNamesTuple[number];
+
+export type SquareCache = Record<string, Square>;

@@ -1,72 +1,97 @@
-import { Color } from './types';
+import { ColorSchemes } from './types';
 
-// Palette      | Hex       | RGB             | HSL             | ANSI 256
-// Foreground   | `#F8F8F2` | `248, 248, 242` | `60°  30% 96%`  | `231`
-// Cyan         | `#80FFEA` | `128, 255, 234` | `170° 100% 75%` | `159`
-// Green        | `#8AFF80` | `138, 255, 128` | `115° 100% 75%` | `157`
-// Orange       | `#FFCA80` | `255, 202, 128` | `35°  100% 75%` | `223`
-// Pink         | `#FF80BF` | `255, 128, 191` | `330° 100% 75%` | `218`
-// Purple       | `#9580FF` | `149, 128, 255` | `250° 100% 75%` | `147`
-// Red          | `#FF9580` | `255, 149, 128` | `10°  100% 75%` | `217`
-// Yellow       | `#FFFF80` | `255, 255, 128` | `60°  100% 75%` | `229`
+export const schemeNames = [
+  'pro',
+  'blade',
+  'buffy',
+  'lincoln',
+  'morbius',
+  'vanHelsing',
+] as const;
 
-// Background   | `#22212C` | `34, 33, 44`    | `250° 15% 15%`  | `59`
-// Comment      | `#7970A9` | `121, 112, 169` | `250° 25% 55%`  | `103`
-// Selection    | `#454158` | `69, 65, 88`    | `250° 15% 30%`  | `60`
-
-export const colors: Color[] = [
-  // Selection
-  {
-    r: 69,
-    g: 65,
-    b: 88,
+export const schemes: ColorSchemes = {
+  pro: {
+    background: '#22212C',
+    colors: [
+      '#454158',
+      '#7970A9',
+      '#9580FF',
+      '#80FFEA',
+      '#8AFF80',
+      '#FFFF80',
+      '#FFCA80',
+      '#FF9580',
+      '#FF80BF',
+    ],
   },
-  // Comment
-  {
-    r: 121,
-    g: 112,
-    b: 169,
+  blade: {
+    background: '#212C2A',
+    colors: [
+      '#415854',
+      '#70A99F',
+      '#9580FF',
+      '#80FFEA',
+      '#8AFF80',
+      '#FFFF80',
+      '#FFCA80',
+      '#FF9580',
+      '#FF80BF',
+    ],
   },
-  // Cyan
-  {
-    r: 128,
-    g: 255,
-    b: 234,
+  buffy: {
+    background: '#2A212C',
+    colors: [
+      '#544158',
+      '#9F70A9',
+      '#9580FF',
+      '#80FFEA',
+      '#8AFF80',
+      '#FFFF80',
+      '#FFCA80',
+      '#FF9580',
+      '#FF80BF',
+    ],
   },
-  // Green
-  {
-    r: 138,
-    g: 255,
-    b: 128,
+  lincoln: {
+    background: '#2C2A21',
+    colors: [
+      '#585441',
+      '#A99F70',
+      '#9580FF',
+      '#80FFEA',
+      '#8AFF80',
+      '#FFFF80',
+      '#FFCA80',
+      '#FF9580',
+      '#FF80BF',
+    ],
   },
-  // Orange
-  {
-    r: 255,
-    g: 202,
-    b: 128,
+  morbius: {
+    background: '#2C2122',
+    colors: [
+      '#584145',
+      '#A97079',
+      '#9580FF',
+      '#80FFEA',
+      '#8AFF80',
+      '#FFFF80',
+      '#FFCA80',
+      '#FF9580',
+      '#FF80BF',
+    ],
   },
-  // Pink
-  {
-    r: 255,
-    g: 128,
-    b: 191,
+  vanHelsing: {
+    background: '#0B0D0F',
+    colors: [
+      '#414D58',
+      '#708CA9',
+      '#9580FF',
+      '#80FFEA',
+      '#8AFF80',
+      '#FFFF80',
+      '#FFCA80',
+      '#FF9580',
+      '#FF80BF',
+    ],
   },
-  // Purple
-  {
-    r: 149,
-    g: 128,
-    b: 255,
-  },
-  // Red
-  {
-    r: 255,
-    g: 149,
-    b: 128,
-  },
-  // Yellow
-  {
-    r: 255,
-    g: 255,
-    b: 128,
-  },
-];
+};

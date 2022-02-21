@@ -12,16 +12,8 @@
             "value": "drops"
           },
           {
-            "label": "Blinky Cos",
-            "value": "blinkyCos"
-          },
-          {
-            "label": "Blinky Tan",
-            "value": "blinkyTan"
-          },
-          {
-            "label": "Blinky Sin",
-            "value": "blinkySin"
+            "label": "Blinky",
+            "value": "blinky"
           }
         ],
         "order": 100,
@@ -29,41 +21,74 @@
         "type": "combo",
         "value": "drops"
       },
-      "schemecolor": {
-        "order": 0,
-        "text": "ui_browse_properties_scheme_color",
-        "type": "color",
-        "value": "0.4745098039215686 0.4392156862745098 0.6627450980392157"
+      "scheme": {
+        "index": 1,
+        "options": [
+          {
+            "label": "Pro",
+            "value": "pro"
+          },
+          {
+            "label": "Blade",
+            "value": "blade"
+          },
+          {
+            "label": "Buffy",
+            "value": "buffy"
+          },
+          {
+            "label": "Lincoln",
+            "value": "lincoln"
+          },
+          {
+            "label": "Morbius",
+            "value": "morbius"
+          },
+          {
+            "label": "Van Helsing",
+            "value": "vanHelsing"
+          }
+        ],
+        "order": 101,
+        "text": "Scheme",
+        "type": "combo",
+        "value": "pro"
       },
       "spacing": {
-        "fraction": false,
-        "index": 3,
-        "max": 100,
-        "min": 1,
-        "order": 103,
-        "text": "Spacing",
-        "type": "slider",
-        "value": 4
-      },
-      "speed": {
-        "fraction": false,
-        "index": 1,
-        "max": 100,
-        "min": 1,
-        "order": 101,
-        "text": "Interval",
-        "type": "interval",
-        "value": 50
-      },
-      "squareSize": {
         "fraction": false,
         "index": 2,
         "max": 100,
         "min": 1,
         "order": 102,
+        "text": "Spacing",
+        "type": "slider",
+        "value": 4
+      },
+      "interval": {
+        "fraction": false,
+        "index": 3,
+        "max": 1000,
+        "min": 1,
+        "order": 103,
+        "text": "Interval (ms)",
+        "type": "slider",
+        "value": 10
+      },
+      "squareSize": {
+        "fraction": false,
+        "index": 4,
+        "max": 100,
+        "min": 1,
+        "order": 104,
         "text": "Square Size",
         "type": "slider",
         "value": 6
+      },
+      "schemecolor": {
+        "order": 105,
+        "text": "ui_browse_properties_scheme_color",
+        "type": "color",
+        "value": "0.4745098039215686 0.4392156862745098 0.6627450980392157"
       }
     }
   },
@@ -73,7 +98,7 @@
   ],
   "title": "Dracula",
   "type": "web",
-  "version": 2,
+  "version": 3,
   "workshopid": "2759090403",
   "workshopurl": "steam://url/CommunityFilePage/2759090403"
 }

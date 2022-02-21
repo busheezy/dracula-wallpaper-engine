@@ -11,10 +11,10 @@ export function effectUpdate(userProperties: UserProperties) {
   currentEffect.effect?.(info);
 }
 
-let timer: null | NodeJS.Timer = null;
+let timer: null | NodeJS.Timeout = null;
 
 export function startEffectUpdate(userProperties: UserProperties) {
-  clearTimeout(timer);
+  clearInterval(timer);
 
   timer = setInterval(() => {
     effectUpdate(userProperties);

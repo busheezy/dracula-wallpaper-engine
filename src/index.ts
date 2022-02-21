@@ -31,11 +31,11 @@ function run() {
   window.requestAnimationFrame(run);
 }
 
-window.onload = function () {
+window.addEventListener('load', () => {
   window.requestAnimationFrame(run);
   resize();
 
   if (process.env.NODE_ENV !== 'production') {
     startEffectUpdate(userProperties);
   }
-};
+});
