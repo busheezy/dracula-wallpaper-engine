@@ -6,6 +6,18 @@ import { currentInfo } from './lib';
 
 const qs = parse(location.search);
 
+const colorNames = [
+  'Selection',
+  'Comment',
+  'Purple',
+  'Cyan',
+  'Green',
+  'Yellow',
+  'Orange',
+  'Red',
+  'Pink',
+];
+
 export function drawDebug() {
   if (!qs.x || !qs.y || Array.isArray(qs.x) || Array.isArray(qs.y)) {
     return;
@@ -25,7 +37,7 @@ export function drawDebug() {
   const alphaFixed = alpha.toFixed(2);
 
   debugs.unshift(`Alpha: ${alphaFixed}`);
-  debugs.unshift(`Color Index: ${colorIndex}`);
+  debugs.unshift(`Color: ${colorNames[colorIndex]}`);
   debugs.unshift(`Box: ${debugX}, ${debugY}`);
 
   ctx.fillStyle = 'rgba(0, 0, 0, 0.8)';
